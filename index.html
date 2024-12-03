@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멍멍이와 산책</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 0px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        main h1 {
+            text-align: center;
+        }
+
+        /* 애니메이션 설정 */
+        .animated-image {
+            width: 200px;
+            position: absolute;
+            top: 150px;
+            animation: moveLeftRight 6s infinite alternate;
+        }
+
+        @keyframes moveLeftRight {
+            0% { left: 0; }
+            100% { left: calc(100% - 200px); }
+        }
+
+        main {
+            margin-top: 200px;
+            padding: 20px;
+        }
+
+        /* 카드 컨테이너 스타일 */
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            width: 300px;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .card h2 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>멍멍이와 산책</h1>
+    <p>가상 멍멍이와 산책해보세요!</p>
+</header>
+
+    <!-- 애니메이션 적용된 이미지 -->
+    <img src="image/오른쪽으로_향하는_강아지.png" alt="움직이는 이미지" class="animated-image" id="dogImage">
+
+    <script>
+        const dogImage = document.getElementById('dogImage');
+        let isMovingRight = true; // 상태 추적 변수
+
+        // 애니메이션 반복 시 이미지 전환
+        dogImage.addEventListener('animationiteration', () => {
+            if (isMovingRight) {
+                dogImage.src = 'image/왼쪽으로_향하는_강아지.png';
+            } else {
+                dogImage.src = 'image/오른쪽으로_향하는_강아지.png';
+            }
+            isMovingRight = !isMovingRight; // 방향 상태 전환
+        });
+
+        // 마우스 호버 시 애니메이션 멈춤 및 이미지 변경
+        dogImage.addEventListener('mouseover', () => {
+            dogImage.style.animationPlayState = 'paused';
+            dogImage.src = 'image/멈춘_강아지.png';
+        });
+
+        // 마우스가 떠났을 때 다시 애니메이션 재개
+        dogImage.addEventListener('mouseout', () => {
+            dogImage.style.animationPlayState = 'running';
+            dogImage.src = isMovingRight
+                ? 'image/오른쪽으로_향하는_강아지.png'
+                : 'image/왼쪽으로_향하는_강아지.png';
+        });
+    </script>
+<!-- 산책로 클릭시 팝업 창 뜨게 만들기. 아님 인프레임도 나쁘지 않음. 컬러팔레트 밝게 바꾸고, 푸터 지울지 고민하기 -->
+<main>
+    <h1>어디를 산책할까?</h1>
+
+    <div class="card-container">
+        <section id="section1" class="card">
+            <h2>냥이길</h2>
+            <p>산책하며 학교냥이들을 찾아봐요!</p>
+        </section>
+
+        <section id="section2" class="card">
+            <h2>산책로2</h2>
+            <p>맑은 하늘 아래에서 함께 걸어봐요.</p>
+        </section>
+
+        <section id="section3" class="card">
+            <h2>산책로3</h2>
+            <p>내용 채우기</p>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>푸터 내용 채우기</p>
+</footer>
+
+</body>
+</html>
