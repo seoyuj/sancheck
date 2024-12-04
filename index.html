@@ -87,11 +87,11 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            overflow: auto;
-            width: 90%;
-            max-width: 400px;
-            height: auto;        /* 자동 높이 */
-            max-height: 80vh;    /* 화면 높이의 80%로 제한 */
+            overflow-y: auto;
+            width: 90%;             /* 화면 너비의 90% */
+            max-width: 400px;       /* 최대 너비 제한 */
+            height: auto;           /* 자동 높이 설정 */
+            max-height: calc(100vh - 50px); /* 화면 높이의 100%에서 40px을 뺀 값 */
             background-color: white;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             z-index: 1000;
